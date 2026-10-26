@@ -1,0 +1,44 @@
+:root { color-scheme: light dark }
+* { box-sizing: border-box }
+body { margin: 0 }
+body { font-family: system-ui, sans-serif }
+body { line-height: 1.6 }
+body { background: light-dark(#f7f8fc, #10141e) }
+body { color: light-dark(#192338, #e7eefc) }
+main { max-width: 760px }
+main { margin: 0 auto }
+main { padding: 24px 18px }
+h1 { font-size: clamp(2rem, 6vw, 3rem) }
+h1 { margin: 0 }
+header > p:first-child { color: light-dark(#365b92, #92b4ff) }
+form, section { border: 1px solid light-dark(#c3cde0, #3b4962) }
+form, section { border-radius: 14px }
+form, section { padding: 20px }
+form, section { margin: 20px 0 }
+label { display: block }
+label { margin-top: 12px }
+input, select, button { font: inherit }
+input, select, button { width: 100% }
+input, select, button { padding: 10px }
+input, select, button { min-height: 44px }
+input, select, button { border-radius: 6px }
+input, select { border: 1px solid light-dark(#798ca9, #667995) }
+button { background: light-dark(#254f9b, #a8c5ff) }
+button { color: light-dark(#ffffff, #101e37) }
+button { border: 0 }
+button { margin-top: 20px }
+button { cursor: pointer }
+button:disabled { opacity: .6 }
+summary { cursor: pointer }
+details { margin-top: 16px }
+section { overflow-wrap: anywhere }
+section img { max-width: 120px }
+section img { max-height: 120px }
+section img { border-radius: 10px }
+dt { font-weight: 650 }
+dd { margin: 0 0 14px }
+pre { white-space: pre-wrap }
+pre { font-size: .85rem }
+a { color: light-dark(#254f9b, #a8c5ff) }
+:focus-visible { outline: 3px solid light-dark(#1b67ce, #f0c568) }
+footer { font-size: .85rem }

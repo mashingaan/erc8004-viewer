@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>ERC-8004 identity viewer</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+<main>
+  <header><p>ERC-8004 / Base</p><h1>Agent identity</h1><p>Read identity and feedback directly from the registry. No wallet connection.</p></header>
+  <form id="lookup">
+    <label for="network">Network</label><select id="network"><option value="base">Base</option><option value="base-sepolia">Base Sepolia</option></select>
+    <label for="agent">Agent ID</label><input id="agent" inputmode="numeric" pattern="[0-9]+" required value="1">
+    <details><summary>Read settings</summary>
+      <label for="rpc">RPC URL</label><input id="rpc" type="url" required>
+      <label for="identity">Identity registry</label><input id="identity" required>
+      <label for="reputation">Reputation registry (optional)</label><input id="reputation">
+    </details>
+    <button id="load">Read agent</button>
+  </form>
+  <p id="status" role="status" aria-live="polite">Enter an agent ID to begin.</p>
+  <section id="result" hidden></section>
+  <footer><p>Registration content is supplied by the agent. Feedback is unfiltered and is not a trust guarantee.</p></footer>
+</main>
+</body>
+</html>
