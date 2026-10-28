@@ -113,6 +113,12 @@ test('boundaries invalid IDs networks addresses and unsafe URI schemes', async (
   for (const override of [{network: 'ethereum'}, {identityRegistry: owner + '0'}, {reputationRegistry: 'bad'}]) assert.equal((await loadAgent({...options, ...override})).status, 'error')
   for (const uri of ['javascript:alert(1)', 'file:///etc/passwd', 'ipfs://../a', 'ipfs://', 'https://user:password@example.org/']) assert.throws(() => resolveURI(uri))
 })
+test('A2 encoded dot segments cannot escape the IPFS gateway prefix', () => {
+  for (const uri of ['ipfs://bafycid/%2e%2e/other', 'ipfs://bafycid/.%2E/other', 'ipfs://bafycid/a%2fb', 'ipfs://bafycid/%']) {
+    assert.throws(() => resolveURI(uri))
+  }
+  assert.equal(resolveURI('ipfs://bafycid/space%20name.json'), 'https://ipfs.io/ipfs/bafycid/space%20name.json')
+})
 test('timeout bounds an adapter that ignores abort and another call recovers', async t => {
   t.mock.timers.enable({apis: ['setTimeout']})
   const {options} = fixture()

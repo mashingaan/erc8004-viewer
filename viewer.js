@@ -20,7 +20,10 @@ export function resolveURI(uri) {
   if (typeof uri !== 'string') throw new Error('URI must be text')
   if (uri.startsWith('ipfs://')) {
     const path = uri.slice(7).replace(/^ipfs\//, '')
-    if (!path || /[?#\\\s]/.test(path) || path.split('/').some(s => s === '..' || s === '.')) throw new Error('Invalid IPFS URI')
+    if (!path || /[?#\\\s]/.test(path) || path.split('/').some(s => {
+      const decoded = decodeURIComponent(s)
+      return decoded === '..' || decoded === '.' || /[\\/]/.test(decoded)
+    })) throw new Error('Invalid IPFS URI')
     return `https://ipfs.io/ipfs/${path}`
   }
   const url = new URL(uri)
